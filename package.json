@@ -1,8 +1,8 @@
 {
   "name": "vue-music",
-  "description": "A Vue.js project",
+  "description": "Vue Music app",
   "version": "1.0.0",
-  "author": "Albert Pedrola <b.albemar@gmail.com>",
+  "author": "Albert Pedrola",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
