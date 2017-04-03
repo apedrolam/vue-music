@@ -13,7 +13,7 @@ export default {
 
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 li
     display: block
     margin: 10px 0

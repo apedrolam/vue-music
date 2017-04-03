@@ -1,36 +1,54 @@
 <template lang="pug">
-#app
+  #app
     img(src='./assets/logo.png')
     h1 Vue Music
+    select(v-model="selectedCountry")
+      option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
     ul
-        artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
+      artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
 </template>
 
 <script>
 import Artist from './components/Artist.vue'
-import getArtist from './api'
+import getArtists from './api'
 
 export default {
   name: 'app',
   data () {
     return {
-      artists: []
+      artists: [],
+      countries: [
+        { name: 'Spain', value: 'spain' },
+        { name: 'Colombia', value: 'colombia' },
+        { name: 'Argentina', value: 'argentina' },
+      ],
+      selectedCountry: 'spain'
     }
   },
   components: {
-      Artist
+    Artist
   },
-  mounted: function() {
-      const self = this;
-      getArtist()
-        .then(function(artists) {
-            self.artists = artists
+  methods: {
+    refreshArtists() {
+      const self = this
+      getArtists(this.selectedCountry)
+        .then(function (artists) {
+          self.artists = artists
         })
+    }
+  },
+  mounted() {
+    this.refreshArtists()
+  },
+  watch: {
+    selectedCountry() {
+      this.refreshArtists()
+    }
   }
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
