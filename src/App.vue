@@ -1,35 +1,55 @@
 <template lang="pug">
-#app
+  #app
     img(src='./assets/logo.png')
-    h1
-    h2 Essential Links
+    h1 Vue Music
+    select(v-model="selectedCountry")
+      option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
+    spinner(v-show="loading")
     ul
-      li
-        a(href='https://vuejs.org', target='_blank') Core Docs
-      li
-        a(href='https://forum.vuejs.org', target='_blank') Forum
-      li
-        a(href='https://gitter.im/vuejs/vue', target='_blank') Gitter Chat
-      li
-        a(href='https://twitter.com/vuejs', target='_blank') Twitter
-    h2 Ecosystem
-    ul
-      li
-        a(href='http://router.vuejs.org/', target='_blank') vue-router
-      li
-        a(href='http://vuex.vuejs.org/', target='_blank') vuex
-      li
-        a(href='http://vue-loader.vuejs.org/', target='_blank') vue-loader
-      li
-        a(href='https://github.com/vuejs/awesome-vue', target='_blank') awesome-vue
+      artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
 </template>
 
 <script>
+import Artist from './components/Artist.vue'
+import Spinner from './components/Spinner.vue'
+import getArtists from './api'
+
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      artists: [],
+      countries: [
+        { name: 'Spain', value: 'spain' },
+        { name: 'Colombia', value: 'colombia' },
+        { name: 'Argentina', value: 'argentina' },
+      ],
+      selectedCountry: 'spain',
+      loading: true
+    }
+  },
+  components: {
+    Artist,
+    Spinner
+  },
+  methods: {
+    refreshArtists() {
+      const self = this
+      this.loading = true
+      this.artist = []
+      getArtists(this.selectedCountry)
+        .then(function (artists) {
+          self.artists = artists
+          self.loading = false
+        })
+    }
+  },
+  mounted() {
+    this.refreshArtists()
+  },
+  watch: {
+    selectedCountry() {
+      this.refreshArtists()
     }
   }
 }
