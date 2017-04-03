@@ -1,3 +1,3 @@
 # vue-music
 
-> A Vue.js project that displays some artists info using last.fm API
+> A Vue.js project that displays a list of the top artists of a country using last.fm API
