@@ -206,7 +206,7 @@ export default {
           { name: 'Venezuela', value: 'venezuela' },
           { name: 'Yemen', value: 'yemen' },
           { name: 'Zambia', value: 'zambia' },
-          { name: 'Zimbabwe', value: 'zimbabwe' },
+          { name: 'Zimbabwe', value: 'zimbabwe' }
 
       ],
       selectedCountry: 'spain',
