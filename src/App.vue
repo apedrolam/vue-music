@@ -255,9 +255,13 @@ h1, h2
 ul
   list-style-type none
   padding 0
+  display flex
+  flex-wrap: wrap
+  flex-direction row
+  justify-content center
+  align-items center
 
 li
-  display inline-block
   margin 0 10px
 
 a

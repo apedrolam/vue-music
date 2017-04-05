@@ -16,6 +16,8 @@ export default {
 
 <style lang="stylus" scoped>
 li
-    display: block
     margin: 10px 0
+    padding 0 5px
+    flex-basis: 0
+    align-self flex-end
 </style>
