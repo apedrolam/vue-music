@@ -198,7 +198,7 @@ export default {
           { name: 'Tuvalu', value: 'tuvalu' },
           { name: 'Uganda', value: 'uganda' },
           { name: 'Ukraine', value: 'ukraine' },
-          { name: 'United Kingdom', value: 'united kingom' },
+          { name: 'United Kingdom', value: 'united kingdom' },
           { name: 'United States of America', value: 'united states' },
           { name: 'Uruguay', value: 'uruguay' },
           { name: 'Uzbekistan', value: 'uzbekistan' },
